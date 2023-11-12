@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+//MARK: TO DO LIST
+//Class, protocol
+// talks to -> interactor,view,router

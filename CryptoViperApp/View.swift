@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+//MARK: TO DO LIST
+//Talks to -> Presenter
+//Class, protocol
+//Viewcontroler

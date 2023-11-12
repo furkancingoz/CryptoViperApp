@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+//MARK: TO DO LIST
+//Struct
+
+struct Crypto: Decodable{
+  let currency : String
+  let price : String
+}
