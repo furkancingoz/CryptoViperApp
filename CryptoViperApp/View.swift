@@ -36,7 +36,7 @@ class CryptoViewController : UIViewController, AnyView, UITableViewDelegate, UIT
     label.isHidden = false
     label.text = "Downloading..."
     label.font = UIFont.systemFont(ofSize: 25)
-    label.textColor = .black
+    label.textColor = .white
     label.textAlignment = .center
     return label
   }()
@@ -62,7 +62,14 @@ class CryptoViewController : UIViewController, AnyView, UITableViewDelegate, UIT
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return UITableViewCell()
+    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    var content = cell.defaultContentConfiguration()
+    content.text = cryptos[indexPath.row].currency
+    content.secondaryText = cryptos[indexPath.row].price
+    cell.contentConfiguration = content
+    cell.backgroundColor = .white
+
+    return cell
   }
 
   func update(wtih cryptos: [Crypto]) {
@@ -75,7 +82,12 @@ class CryptoViewController : UIViewController, AnyView, UITableViewDelegate, UIT
   }
 
   func update(with error: String) {
-
+    DispatchQueue.main.async {
+      self.cryptos = []
+      self.tableView.isHidden = true
+      self.messageLabel.text = "Error"
+      self.messageLabel.isHidden = false
+    }
   }
 
 
